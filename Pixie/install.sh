@@ -11,7 +11,7 @@ fi
 # Uno is ATmega328, Zero is SAMD21G18, ESP8266, Leonardo is ATmega32u4, M4 is SAMD51, Mega is ATmega2560, ESP32
 
 #export MAIN_PLATFORMS='declare -A main_platforms=( [uno]="arduino:avr:uno" [esp8266]="esp8266:esp8266:huzzah:eesz=4M3M,xtal=160" [leonardo]="arduino:avr:leonardo" [mega2560]="arduino:avr:mega:cpu=atmega2560" [esp32]="esp32:esp32:featheresp32:FlashFreq=80" )'
-export MAIN_PLATFORMS='declare -A main_platforms=( [esp8266]="esp8266:esp8266:huzzah:eesz=4M3M,xtal=160" )'
+export MAIN_PLATFORMS='declare -A main_platforms=( [esp8266]="esp8266:esp8266:huzzah:eesz=4M3M,xtal=160" [esp32]="esp32:esp32:featheresp32:FlashFreq=80")'
 
 # associative array for other platforms that can be called explicitly in .travis.yml configs
 # this will be eval'd in the functions below because arrays can't be exported
@@ -102,7 +102,7 @@ rm -rf ~/.arduino15/packages/esp32
 echo -n "Current packages list:"
 [ -d ~/.arduino15/packages/ ] && ls ~/.arduino15/packages/
 
-#INSTALL_ESP32=$([[ $INSTALL_PLATFORMS == *"esp32"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
+INSTALL_ESP32=$([[ $INSTALL_PLATFORMS == *"esp32"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
 #INSTALL_ZERO=$([[ $INSTALL_PLATFORMS == *"zero"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
 INSTALL_ESP8266=$([[ $INSTALL_PLATFORMS == *"esp8266"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
 #INSTALL_AVR=$([[ $INSTALL_PLATFORMS == *"avr"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
