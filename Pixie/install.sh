@@ -9,7 +9,9 @@ fi
 # associative array for the platforms that will be verified in build_main_platforms()
 # this will be eval'd in the functions below because arrays can't be exported
 # Uno is ATmega328, Zero is SAMD21G18, ESP8266, Leonardo is ATmega32u4, M4 is SAMD51, Mega is ATmega2560, ESP32
-export MAIN_PLATFORMS='declare -A main_platforms=( [uno]="arduino:avr:uno" [esp8266]="esp8266:esp8266:huzzah:eesz=4M3M,xtal=160" [leonardo]="arduino:avr:leonardo" [mega2560]="arduino:avr:mega:cpu=atmega2560" [esp32]="esp32:esp32:featheresp32:FlashFreq=80" )'
+
+#export MAIN_PLATFORMS='declare -A main_platforms=( [uno]="arduino:avr:uno" [esp8266]="esp8266:esp8266:huzzah:eesz=4M3M,xtal=160" [leonardo]="arduino:avr:leonardo" [mega2560]="arduino:avr:mega:cpu=atmega2560" [esp32]="esp32:esp32:featheresp32:FlashFreq=80" )'
+export MAIN_PLATFORMS='declare -A main_platforms=( [esp8266]="esp8266:esp8266:huzzah:eesz=4M3M,xtal=160" )'
 
 # associative array for other platforms that can be called explicitly in .travis.yml configs
 # this will be eval'd in the functions below because arrays can't be exported
@@ -23,7 +25,7 @@ export MAIN_PLATFORMS='declare -A main_platforms=( [uno]="arduino:avr:uno" [esp8
 
 #export ARCADA_PLATFORMS='declare -A arcada_platforms=( [pybadge]="adafruit:samd:adafruit_pybadge_m4:speed=120", [pygamer]="adafruit:samd:adafruit_pygamer_m4:speed=120", [hallowing_m4]="adafruit:samd:adafruit_hallowing_m4:speed=120", [cplayExpressAda]="adafruit:samd:adafruit_circuitplayground_m0" )'
 
-export IO_PLATFORMS='declare -A io_platforms=( [esp8266]="esp8266:esp8266:huzzah:eesz=4M3M,xtal=160" [esp32]="esp32:esp32:featheresp32:FlashFreq=80" )'
+#export IO_PLATFORMS='declare -A io_platforms=( [esp8266]="esp8266:esp8266:huzzah:eesz=4M3M,xtal=160" [esp32]="esp32:esp32:featheresp32:FlashFreq=80" )'
 
 #export NRF5X_PLATFORMS='declare -A nrf5x_platforms=( [nrf52840]="adafruit:nrf52:feather52840:softdevice=s140v6,debug=l0")'
 
@@ -100,10 +102,10 @@ rm -rf ~/.arduino15/packages/esp32
 echo -n "Current packages list:"
 [ -d ~/.arduino15/packages/ ] && ls ~/.arduino15/packages/
 
-INSTALL_ESP32=$([[ $INSTALL_PLATFORMS == *"esp32"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
+#INSTALL_ESP32=$([[ $INSTALL_PLATFORMS == *"esp32"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
 #INSTALL_ZERO=$([[ $INSTALL_PLATFORMS == *"zero"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
 INSTALL_ESP8266=$([[ $INSTALL_PLATFORMS == *"esp8266"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
-INSTALL_AVR=$([[ $INSTALL_PLATFORMS == *"avr"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
+#INSTALL_AVR=$([[ $INSTALL_PLATFORMS == *"avr"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
 #INSTALL_SAMD=$([[ $INSTALL_PLATFORMS == *"samd"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
 #INSTALL_NRF52=$([[ $INSTALL_PLATFORMS == *"nrf52"* || -z "$INSTALL_PLATFORMS" ]] && echo 1 || echo 0)
 
